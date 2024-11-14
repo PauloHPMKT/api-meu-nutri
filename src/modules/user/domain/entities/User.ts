@@ -13,6 +13,10 @@ export class User {
   constructor(props: Omit<User, "_id">, id?: string) {
     Object.assign(this, props);
     this._id = id || this.generateId();
+    this.avatar = props.avatar ?? null;
+    this.isActive = props.isActive || true;
+    this.createdAt = props.createdAt || new Date();
+    this.updatedAt = props.updatedAt ?? null;
   }
 
   private generateId(): string {
