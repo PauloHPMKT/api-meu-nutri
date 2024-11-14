@@ -9,4 +9,13 @@ describe('User entity', () => {
         })
         expect(userEntity).toBeDefined()
     })
+
+    it('should define avatar as null when it is not provided', () => {
+        const userEntity = new User({
+            name: 'John Doe',
+            email: 'any_email@example.com',
+            password: 'any_password'
+        })
+        expect(userEntity.avatar).toBeNull()
+    })
 })
