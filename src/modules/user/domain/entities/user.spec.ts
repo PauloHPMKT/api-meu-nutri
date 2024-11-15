@@ -24,4 +24,11 @@ describe('User entity', () => {
         const sut = makeSut()
         expect(sut.isActive).toBeTruthy()
     })
+
+    it('should define createdAt as current date when a new user is created', () => {
+        const sut = makeSut()
+        let createdAt = new Date()
+        expect(sut.createdAt).toEqual(createdAt)
+        expect(sut.createdAt).toBeInstanceOf(Date)
+    })
 })
