@@ -1,4 +1,11 @@
 import { User } from "./User"
+import { randomBytes } from "crypto"
+
+class UniqueId {
+    static randomBytes(): string {
+        return randomBytes(12).toString("hex")
+    }
+}
 
 const makeSut = (): User => {
     const sut = new User({
@@ -35,5 +42,12 @@ describe('User entity', () => {
     it('should define updatedAt as null as default during a user creation', () => {
         const sut = makeSut()
         expect(sut.updatedAt).toBeNull()
+    })
+
+    it('should generate an id when a new user is created', () => {
+        const sut = makeSut()
+        expect(sut._id).toBeDefined()
+        expect(sut._id).toHaveLength(24)
+        expect(sut._id).not.toBeNull()
     })
 })
