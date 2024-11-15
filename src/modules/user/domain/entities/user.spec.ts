@@ -31,4 +31,9 @@ describe('User entity', () => {
         expect(sut.createdAt).toEqual(createdAt)
         expect(sut.createdAt).toBeInstanceOf(Date)
     })
+
+    it('should define updatedAt as null as default during a user creation', () => {
+        const sut = makeSut()
+        expect(sut.updatedAt).toBeNull()
+    })
 })
